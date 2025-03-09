@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             errorMessage.textContent = ""; // Limpa a mensagem de erro
             errorMessage.style.display = "none"; // Esconde a mensagem de erro
             alert("Login bem-sucedido!");
-            window.location.href = "dashboard.html"; // Redireciona para outra página
+            window.location.href = "home.html"; // Redireciona para outra página
         } else {
             errorMessage.textContent = "Usuário ou senha incorretos!"; // Define o texto do erro
             errorMessage.style.display = "block"; // Torna a mensagem visível

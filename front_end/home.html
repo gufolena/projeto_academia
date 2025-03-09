@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Academia Fit</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+        <h1>Academia Fit</h1>
+    </header>
+
+    <nav id="mobileMenu" class="hidden">
+        <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Treinos</a></li>
+            <li><a href="#">Dieta</a></li>
+            <li><a href="#">Perfil</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Notificações -->
+        <div class="notificacoes" id="notificacoes">
+            <span>📢 Nenhuma nova notificação</span>
+            <button id="closeNotification" class="close-btn">X</button>
+        </div>
+
+        <section class="welcome">
+            <h2>Bem-vindo(a), <span id="username">Usuário</span>!</h2>
+            <p>Confira suas atividades diárias e objetivos.</p>
+        </section>
+
+        <section class="cards">
+            <div class="card">🏋️‍♂️ Meu Treino</div>
+            <div class="card">🥗 Minha Dieta</div>
+            <div class="card">📊 Progresso</div>
+        </section>
+    </div>
+
+    <!-- Botão de alternância de tema (apenas ícone) -->
+    <button class="theme-toggle" id="toggleTheme">🌙</button>
+
+    <script src="home.js"></script>
+</body>
+</html>
