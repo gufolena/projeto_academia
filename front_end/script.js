@@ -26,10 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
     togglePassword.addEventListener("click", function () {
         if (passwordInput.type === "password") {
             passwordInput.type = "text";
-            togglePassword.innerHTML = "🔓"; // Cadeado aberto
+            togglePassword.innerHTML = ""; // Cadeado aberto
         } else {
             passwordInput.type = "password";
-            togglePassword.innerHTML = "🔒"; // Cadeado fechado
+            togglePassword.innerHTML = ""; // Cadeado fechado
         }
     });
 });
+
+// Registro do Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('/service-worker.js')
+            .then((reg) => console.log('Service Worker: Registered'))
+            .catch((err) => console.log(`Service Worker: Error: ${err}`));
+    });
+}
