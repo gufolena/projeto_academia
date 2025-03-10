@@ -8,11 +8,11 @@
 </head>
 <body>
     <header>
-        <div class="menu-toggle" id="menuToggle">☰</div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
         <h1>Academia Fit</h1>
     </header>
 
-    <nav id="mobileMenu" class="hidden">
+    <nav id="mobileMenu" class="hidden" aria-label="Menu de navegação móvel">
         <ul>
             <li><a href="#">Início</a></li>
             <li><a href="#">Treinos</a></li>
@@ -21,27 +21,24 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <!-- Notificações -->
-        <div class="notificacoes" id="notificacoes">
-            <span>📢 Nenhuma nova notificação</span>
-            <button id="closeNotification" class="close-btn">X</button>
-        </div>
+    <main class="container">
+        <section class="notificacoes" id="notificacoes" aria-label="Notificações">
+            <span></span> <button id="closeNotification" class="close-btn" aria-label="Fechar notificação">X</button>
+        </section>
 
-        <section class="welcome">
+        <section class="welcome" aria-label="Boas-vindas">
             <h2>Bem-vindo(a), <span id="username">Usuário</span>!</h2>
             <p>Confira suas atividades diárias e objetivos.</p>
         </section>
 
-        <section class="cards">
-            <div class="card">🏋️‍♂️ Meu Treino</div>
-            <div class="card">🥗 Minha Dieta</div>
-            <div class="card">📊 Progresso</div>
+        <section class="cards" aria-label="Ações rápidas">
+            <div class="card" data-action="treino">🏋️‍♂️ Meu Treino</div>
+            <div class="card" data-action="dieta">🥗 Minha Dieta</div>
+            <div class="card" data-action="progresso">📊 Progresso</div>
         </section>
-    </div>
+    </main>
 
-    <!-- Botão de alternância de tema (apenas ícone) -->
-    <button class="theme-toggle" id="toggleTheme">🌙</button>
+    <button class="theme-toggle" id="toggleTheme" aria-label="Alternar tema">🌙</button>
 
     <script src="home.js"></script>
 </body>

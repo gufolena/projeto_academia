@@ -6,58 +6,59 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeNotificationBtn = document.getElementById("closeNotification");
     const toggleThemeBtn = document.getElementById("toggleTheme");
 
-    // Simulação de pegar o nome do usuário (pode vir do backend no futuro)
-    const username = "João"; 
-    usernameSpan.textContent = username;
+    const USERNAME_KEY = "username";
+    const DARK_MODE_KEY = "darkMode";
 
-    // Exibe notificações se houver
-    const novasNotificacoes = true; 
-    if (novasNotificacoes) {
-        notificacoes.textContent = "📢 Você tem novas notificações!";
+    // Função para atualizar o nome do usuário
+    function updateUsername(username) {
+        usernameSpan.textContent = username;
+    }
+
+    // Função para exibir notificações
+    function showNotifications(message) {
+        notificacoes.textContent = message;
         notificacoes.style.display = "block";
     }
 
-    // Fechar notificação
-    closeNotificationBtn.addEventListener("click", function () {
+    // Função para fechar notificações
+    function closeNotifications() {
         notificacoes.style.display = "none";
-    });
-
-    // Menu responsivo
-    menuToggle.addEventListener("click", function () {
-        mobileMenu.classList.toggle("hidden");
-    });
-
-    // Animação nos cards ao passar o mouse
-    document.querySelectorAll(".card").forEach(card => {
-        card.addEventListener("mouseover", function () {
-            this.style.background = "#ff5722";
-        });
-
-        card.addEventListener("mouseout", function () {
-            this.style.background = "#007bff";
-        });
-    });
-
-    // Verificar se o modo escuro está ativado no armazenamento local
-    if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark-mode");
-        toggleThemeBtn.textContent = "🌞"; // Sol no modo escuro
-    } else {
-        document.body.classList.remove("dark-mode");
-        toggleThemeBtn.textContent = "🌙"; // Lua no modo claro
     }
 
-    // Alternar entre modo escuro e claro
-    toggleThemeBtn.addEventListener("click", function () {
-        document.body.classList.toggle("dark-mode");
+    // Função para alternar o menu móvel
+    function toggleMobileMenu() {
+        mobileMenu.classList.toggle("hidden");
+        const isExpanded = !mobileMenu.classList.contains("hidden");
+        menuToggle.setAttribute("aria-expanded", isExpanded);
+    }
 
-        // Alterar ícone conforme o modo
-        if (document.body.classList.contains("dark-mode")) {
-            toggleThemeBtn.textContent = "🌞"; // Sol no modo escuro
-            localStorage.setItem("darkMode", "true"); // Salvar a preferência do usuário
-        } else {
-            toggleThemeBtn.textContent = "🌙"; // Lua no modo claro
-            localStorage.setItem("darkMode", "false"); // Salvar a preferência do usuário
-        }
-    });
+    // Função para aplicar o tema salvo
+    function applySavedTheme() {
+        const isDarkMode = localStorage.getItem(DARK_MODE_KEY) === "true";
+        document.body.classList.toggle("dark-mode", isDarkMode);
+        toggleThemeBtn.textContent = isDarkMode ? "🌞" : "🌙";
+    }
+
+    // Função para alternar o tema
+    function toggleTheme() {
+        document.body.classList.toggle("dark-mode");
+        const isDarkMode = document.body.classList.contains("dark-mode");
+        toggleThemeBtn.textContent = isDarkMode ? "🌞" : "🌙";
+        localStorage.setItem(DARK_MODE_KEY, isDarkMode);
+    }
+
+    // Inicialização
+    function init() {
+        // Simulação de pegar o nome do usuário (pode vir do backend no futuro)
+        const username = "João";
+        updateUsername(username);
+
+        // Remove a lógica de notificação
+        closeNotificationBtn.addEventListener("click", closeNotifications);
+        menuToggle.addEventListener("click", toggleMobileMenu);
+        applySavedTheme();
+        toggleThemeBtn.addEventListener("click", toggleTheme);
+    }
+
+    init();
 });
